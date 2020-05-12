@@ -1,1 +1,1 @@
-import { multiply } from '../../../libs/src';
+import { multiply } from '../../../libs/src/multiply';
