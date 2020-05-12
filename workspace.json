@@ -1,113 +1,63 @@
 {
   "version": 1,
   "projects": {
-    "tio": {
-      "root": "apps/tio",
-      "sourceRoot": "apps/tio/src",
+    "libs": {
+      "root": "libs",
+      "sourceRoot": "libs/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+          "build": {
+              "builder": "@nrwl/workspace:run-commands",
+              "options": {
+                  "commands": [
+                      {
+                          "command": "echo 'BUILD LIBS'"
+                      }
+                  ]
+              }
+          }
+      }
+    },
+    "micro-app-one": {
+      "root": "apps/micro-app-one",
+      "sourceRoot": "apps/micro-app-one/src",
       "projectType": "application",
       "schematics": {},
       "architect": {
         "build": {
-          "builder": "@nrwl/web:build",
-          "options": {
-            "outputPath": "dist/apps/tio",
-            "index": "apps/tio/src/index.html",
-            "main": "apps/tio/src/main.tsx",
-            "polyfills": "apps/tio/src/polyfills.ts",
-            "tsConfig": "apps/tio/tsconfig.app.json",
-            "assets": ["apps/tio/src/favicon.ico", "apps/tio/src/assets"],
-            "styles": [],
-            "scripts": [],
-            "webpackConfig": "@nrwl/react/plugins/webpack"
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "apps/tio/src/environments/environment.ts",
-                  "with": "apps/tio/src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                }
-              ]
+            "builder": "@nrwl/workspace:run-commands",
+            "options": {
+                "commands": [
+                    {
+                        "command": "echo 'BUILD micro-app-one'"
+                    }
+                ]
             }
-          }
-        },
-        "serve": {
-          "builder": "@nrwl/web:dev-server",
-          "options": {
-            "buildTarget": "tio:build"
-          },
-          "configurations": {
-            "production": {
-              "buildTarget": "tio:build:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "config": "apps/tio/.eslintrc",
-            "tsConfig": [
-              "apps/tio/tsconfig.app.json",
-              "apps/tio/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!apps/tio/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "apps/tio/jest.config.js",
-            "tsConfig": "apps/tio/tsconfig.spec.json",
-            "passWithNoTests": true
-          }
         }
       }
     },
-    "tio-e2e": {
-      "root": "apps/tio-e2e",
-      "sourceRoot": "apps/tio-e2e/src",
+
+    "micro-app-two": {
+      "root": "apps/micro-app-two",
+      "sourceRoot": "apps/micro-app-two/src",
       "projectType": "application",
+      "schematics": {},
       "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/tio-e2e/cypress.json",
-            "tsConfig": "apps/tio-e2e/tsconfig.e2e.json",
-            "devServerTarget": "tio:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "tio:serve:production"
+        "build": {
+            "builder": "@nrwl/workspace:run-commands",
+            "options": {
+                "commands": [
+                    {
+                        "command": "echo 'BUILD micro-app-two'"
+                    }
+                ]
             }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "config": "apps/tio-e2e/.eslintrc",
-            "tsConfig": ["apps/tio-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/tio-e2e/**"]
-          }
         }
       }
     }
   },
+
   "cli": {
     "defaultCollection": "@nrwl/react"
   },

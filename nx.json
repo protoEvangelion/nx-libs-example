@@ -19,12 +19,14 @@
     }
   },
   "projects": {
-    "tio": {
+    "libs": {
       "tags": []
     },
-    "tio-e2e": {
-      "tags": [],
-      "implicitDependencies": ["tio"]
+    "micro-app-one": {
+      "tags": []
+    },
+    "micro-app-two": {
+      "tags": []
     }
   }
 }
